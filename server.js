@@ -13,7 +13,7 @@ var userController = new UserController();
 
 app.use(express.static('public'))
 app.get('/',function(req,res){
-	res.sendStatus(200);
+	res.render('index.html');
 });
 
 

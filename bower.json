@@ -1,0 +1,27 @@
+{
+  "name": "tradeit",
+  "description": "trade items in a local area",
+  "main": "server.js",
+  "authors": [
+    "Thomas Watson"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/res/bower",
+    "test",
+    "tests"
+  ],
+  "directory": "public/res/bower",
+  "dependencies": {
+    "angular": "^1.5.0",
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.0",
+    "angular-route": "^1.5.0",
+    "angular-animate": "^1.5.0"
+  }
+}
