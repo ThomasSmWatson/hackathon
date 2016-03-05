@@ -28,7 +28,9 @@ app.post('/user',function(req,res){
 		username: req.body.username,
 		password:req.body.password,
 		itemsId: req.body.itemsId,
-		locationId: req.body.locationId
+		postcode: req.body.postcode,
+		latitude: req.body.latitude,
+		longitude: req.body.longitude
 	});
 	res.sendStatus(200);
 });

@@ -29,6 +29,10 @@ app.controller('signinController',['$scope','$http',function($scope,$http){
 		$scope.user.username=$scope.username;
 		$scope.user.password=$scope.password;
 		$scope.user.location = $scope.location;
+		var user = $scope.user;
+		if(user.username && user.password && user.location){
+			console.log("Full!");
+		}
 		console.log($scope.user);
 	}
 }]);
