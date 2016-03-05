@@ -3,26 +3,23 @@ var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
-var UserRepository = require('./repositories/UserRepository.js');
+var UserController = require('./controllers/UserController.js');
 app.use(bodyParser.json());
-mongoose.connect('mongodb://localhost/tradeit');
+
+var userController = new UserController();
 
 //Connect to DB
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error: '));
-db.once('open', function(callback){
-        console.log('Database connected on Address.');
-});
-
 
 app.use(express.static('public'))
 app.get('/',function(req,res){
 	res.sendStatus(200);
 });
 
-app.post('/user',function(req,res){
-	res.send(500);
- 
+
+app.get('/user',function(req,res){
+	var users = userController.getUser(function(data){
+		res.send(data);
+	});
 });
 app.listen(8080);
 console.log("Server listening on port: 8080");

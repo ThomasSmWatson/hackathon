@@ -5,11 +5,12 @@ function UserController(){
 	userRepo = new UserRepository();
 }
 
-UserController.prototype.getUser = function() {
-	var values =  userRepo.getUser();
-	if(values) return values;
-	else{
-		return "Empty";
-	}
+UserController.prototype.getUser = function(callback) {
+	userRepo.getUser(function(data){
+		if(data)callback(data);
+	});
 };
+UserController.prototype.postUser = function(json){
+	userRepo.addUser(json);
+}
 module.exports = UserController;

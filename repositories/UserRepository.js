@@ -1,5 +1,6 @@
 var User = require('../schemas/userSchema.js');
 var mongoose = require('mongoose');
+var q = require('q');
 mongoose.connect('mongodb://localhost/tradeit');
 
 var db = mongoose.connection;
@@ -12,7 +13,7 @@ function UserRepository(){
 
 }
 
-UserRepository.prototype.getUser = function() {
+UserRepository.prototype.getUser = function(callback) {
 	User.find({},function(err,docs){
 		if(err)
 		{
@@ -21,9 +22,10 @@ UserRepository.prototype.getUser = function() {
 		} 
 		else
 		{
-			if(docs)
-			return docs;
-			return "no docs nig";
+			if(docs){
+				callback(docs);
+			}
+			callback("");
 		}
 	});
 };
