@@ -16,3 +16,16 @@
 	opacity: 0;
 	position: absolute;
 }
+.signin-input{
+	transition:0.5s;
+	position: relative;
+}
+
+.signin-input.ng-hide{
+	opacity: 0;
+	padding-left:100%;
+}
+.signin-input.ng-hide-remove-active{
+	opacity: 0;
+	padding-right:100%;
+}

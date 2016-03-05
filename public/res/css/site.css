@@ -1,3 +1,12 @@
 body{
-	background-color: rgb(180,180,200);
+	background-color: rgb(180,200,180);
+}
+
+.signin-form-group{
+	position: absolute;
+	width: 500px;
+	margin-left: -250px;
+	margin-top:--15px;
+	top:50%;
+	left:50%;
 }

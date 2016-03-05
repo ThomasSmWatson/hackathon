@@ -21,4 +21,14 @@ app.config(['$routeProvider',function($routeProvider){
 }]);
 app.controller('tradeItController',['$scope','$http',function($scope,$http){
 	$scope.title = "TradeIt!";
+	
+}]);
+app.controller('signinController',['$scope','$http',function($scope,$http){
+	$scope.user = {};
+	$scope.persist = function(){
+		$scope.user.username=$scope.username;
+		$scope.user.password=$scope.password;
+		$scope.user.location = $scope.location;
+		console.log($scope.user);
+	}
 }]);
