@@ -38,14 +38,12 @@ app.controller('signinController',['$scope','$http',function($scope,$http){
 				var location = response.data.results[0].geometry.location;
 				$scope.user.lat = location.lat;
 				$scope.user.lng = location.lng;
-				console.log(location);
-				console.log($scope.user);
+				var user = $scope.user;
+				$http.post('/user',user);
 			  }, function errorCallback(response) {
-			    // called asynchronously if an error occurs
-			    // or server returns response with an error status.
+					console.log("Postcode can't be found FUCK I NEED TO HANDLE THIS!");
 			  });
 		}
-		console.log($scope.user);
 	}
 
 }]);
