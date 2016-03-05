@@ -7,8 +7,8 @@ var userSchema = new Schema(
 		password: String,
 		itemsId: Array,
 		postcode: String,
-		latitude:String,
-		longitude:String
+		lat:String,
+		lng:String
 	}
 );
 
