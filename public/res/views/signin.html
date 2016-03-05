@@ -1,5 +1,9 @@
-<div class="signin-view" ng-controller="signinController">
+<div class="signin-view">
+	
 	<div class="signin-form-group form-group">
+		<div class="page-header">
+			<h1>Sign up</h1>
+		</div>
 		<form class="form-input signin-input" ng-submit="persist()" ng-hide="user.username">
 			<input type="text" id="username" class="form-control" placeholder="Username" ng-model="username" />
 		</form>

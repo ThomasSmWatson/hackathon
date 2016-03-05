@@ -25,7 +25,7 @@ UserRepository.prototype.getUser = function(callback) {
 			if(docs){
 				callback(docs);
 			}
-			callback("");
+			callback(err);
 		}
 	});
 };
@@ -38,10 +38,7 @@ UserRepository.prototype.getUserWithJson = function(deligateJson,callback) {
 		} 
 		else
 		{
-			if(docs){
-				callback(docs);
-			}
-			callback("");
+			callback(docs[0]);
 		}
 	});
 };

@@ -1,3 +1,15 @@
-<div>
-	<h1>Log in</h1>
+<div class="container">
+	<div class="login-form-group" ng-hide="loggedIn">
+		<div class="page-header">
+			<h1>Login</h1>
+		</div>
+		<form class="form-group" ng-submit="login()" >
+				<input type="text" id="username" class="form-control" placeholder="Username" ng-model="user.username" />
+				<input type="password" id="password" class="form-control" placeholder="Password" ng-model="user.password" />
+		</form>
+		<button type="button" class="btn btn-primary" ng-click="login()">Log in</button>
+	</div>
+	<div ng-if="loggedIn" class="welcome-message">
+		<h1 slign="center">Welcome back {{user.username}}!</h1>
+	</div>
 </div>

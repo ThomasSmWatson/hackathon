@@ -11,15 +11,14 @@ UserController.prototype.getUsers = function(callback) {
 	});
 };
 UserController.prototype.getUserWithJson = function(deligateJson,callback) {
+
 	userRepo.getUserWithJson(deligateJson,function(data){
-		if(data)callback(data);
+		callback(data);
 	});
 };
 UserController.prototype.postUser = function(json){
 	userRepo.getUserWithJson({username: json.username},function(data){
-		if(!data)
-		userRepo.addUser(json);
-		console.log("Duplicate attempt");
+		if(!data)userRepo.addUser(json);
 	});
 }
 module.exports = UserController;

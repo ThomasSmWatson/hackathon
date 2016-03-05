@@ -1,3 +1,6 @@
 <div>
-	<h1>trade</h1>
+	<div class="page-header" ng-init="checkLoginStatus()">
+		<h1>Trade</h1>
+	</div>
+	<div ng-hide="loggedIn">You need to sign in</div>
 </div>

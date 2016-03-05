@@ -1,4 +1,5 @@
 var app = angular.module('tradeIt',['ngRoute','ngAnimate']);
+var token =null;
 app.config(['$routeProvider',function($routeProvider){
 	$routeProvider.when('/',{
 		templateUrl:'res/views/home.html'
@@ -7,13 +8,16 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'res/views/home.html'
 	})
 	.when('/signin',{
-		templateUrl:'res/views/signin.html'
+		templateUrl:'res/views/signin.html',
+		controller:'signinController'
 	})
 	.when('/login',{
-		templateUrl:'res/views/login.html'
+		templateUrl:'res/views/login.html',
+		controller:'loginController'
 	})
 	.when('/trade',{
-		templateUrl:'res/views/trade.html'
+		templateUrl:'res/views/trade.html',
+		controller:'tradeController'
 	})
 	.otherwise({
 		redirectTo: '/'
@@ -49,7 +53,31 @@ app.controller('signinController',['$scope','$http',function($scope,$http){
 
 }]);
 
-function getLatAndLongFromAddress($http){
+app.controller('loginController',['$scope','$http',function($scope,$http){
+	$scope.login = function(){
+		console.log($scope.user);
+		if($scope.user.username && $scope.user.password){
+			$scope.user.username = $scope.user.username.toLowerCase();
+			$scope.user.password = $scope.user.password.toLowerCase();
+			var response =$http.post('/authenticate',$scope.user).then(function(response){
+				token = response.data.token;
+				if(token){
+					$scope.loggedIn= true;
+				}
+			});
+		}
 
-}
+	}
+
+}]);
+
+app.controller('tradeController',['$scope','$http',function($scope,$http){
+	$scope.checkLoginStatus = function(){
+		console.log(token);
+		var params = {token:token}
+		$http.post('/verify',params).then(function(response){
+			$scope.loggedIn = (params==true);
+		});
+	}
+}]);
 

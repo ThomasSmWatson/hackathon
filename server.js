@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var jwt = require('jsonwebtoken');
 
 //Controllers. Need a factory!!!!
 var UserController = require('./controllers/UserController.js');
@@ -45,6 +46,33 @@ app.post('/user',function(req,res){
 	});
 	res.sendStatus(200);
 });
+
+app.post('/verify',function(req,res){
+
+
+});
+app.post('/authenticate',function(req,res){
+	userController.getUserWithJson({ username : req.body.username, password: req.body.password},function(data){
+		if(!data){
+			res.json({
+				success:false,
+				message: 'Authentication failed'
+			});
+		}else{
+			var token = jwt.sign(data,'jwtSwcretMessage',{
+				expiresIn:1440*60 //expires in 24 houres!
+			});
+			res.json({
+				success:true,
+				message: 'Enjoy your token!',
+				token: token
+			});
+		}
+	});
+});
+
+
+
 app.listen(8080);
 console.log("Server listening on port: 8080");
 
