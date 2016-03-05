@@ -9,5 +9,6 @@
 		<form class="form-input signin-input" ng-hide="!user.password || user.postcode" ng-submit="persist()">
 			<input type="text" id="postcode" class="form-control" placeholder="Postcode" ng-model="postcode" />
 		</form>
+		<h1 class=".signin-welcome"ng-hide="!formComplete">Welcome to TradeIt, {{user.username}}!</h1>
 	</div>
 </div>

@@ -29,3 +29,16 @@
 	opacity: 0;
 	padding-right:100%;
 }
+.signin-welcome{
+	transition:3s;
+}
+.signin-welcome.ng-hide-remove-active{
+	opacity: 1;
+}
+.signin-welcome.ng-hide{
+	opacity: 0;
+	padding-top: 100px;
+}
+.signin-welcome.ng-hide-remove{
+	opacity: 0;
+}

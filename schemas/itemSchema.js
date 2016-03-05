@@ -3,7 +3,10 @@ var Schema = mongoose.Schema;
 
 var itemSchema = new Schema(
 	{
-		
+		name:String,
+		image:{data:Buffer, contentType: String},
+		price: Number,
+		categories: Array
 	}
 );
 

@@ -1,4 +1,4 @@
-var User = require('../schemas/userSchema.js');
+var Item = require('../schemas/itemSchema.js');
 var mongoose = require('mongoose');
 var q = require('q');
 mongoose.connect('mongodb://localhost/tradeit');
@@ -9,12 +9,12 @@ db.once('open', function(callback){
         console.log('Database connected on Address.');
 });
 
-function UserRepository(){
+function ItemRepository(){
 
 }
 
-UserRepository.prototype.getUser = function(callback) {
-	User.find({},function(err,docs){
+ItemRepository.prototype.getItem = function(callback) {
+	Item.find({},function(err,docs){
 		if(err)
 		{
 			console.log(err);
@@ -29,8 +29,8 @@ UserRepository.prototype.getUser = function(callback) {
 		}
 	});
 };
-UserRepository.prototype.getUserWithJson = function(deligateJson,callback) {
-	User.find(deligateJson,function(err,docs){
+ItemRepository.prototype.getItemWithJson = function(deligateJson,callback) {
+	Item.find(deligateJson,function(err,docs){
 		if(err)
 		{
 			console.log(err);
@@ -45,15 +45,15 @@ UserRepository.prototype.getUserWithJson = function(deligateJson,callback) {
 		}
 	});
 };
-UserRepository.prototype.addUser = function(userJson) 
+ItemRepository.prototype.addItem = function(itemJson) 
 {
 
- var user = new User(userJson);
- user.save(function(err,data){
+ var item = new Item(itemJson);
+ item.save(function(err,data){
  	if(err) console.log(err)
  	else{
  		console.log(data);
  	}
  });
 };
-module.exports = UserRepository;
+module.exports = ItemRepository;

@@ -40,9 +40,10 @@ app.controller('signinController',['$scope','$http',function($scope,$http){
 				$scope.user.lng = location.lng;
 				var user = $scope.user;
 				$http.post('/user',user);
+				$scope.formComplete = true;
 			  }, function errorCallback(response) {
 					console.log("Postcode can't be found FUCK I NEED TO HANDLE THIS!");
-			  });
+			 });
 		}
 	}
 
