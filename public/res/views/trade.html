@@ -2,5 +2,16 @@
 	<div class="page-header" ng-init="checkLoginStatus()">
 		<h1>Trade</h1>
 	</div>
-	<div ng-hide="loggedIn">You need to sign in</div>
-</div>
+	<!-- REVERT THIS WHEN FIXED LOGGING IN -->
+	<div ng-hide="!loggedIn" style="background-color: #fff; width:800px; height:100px;">[loggedin = {{loggedIn}}] You need to log  in</div>
+	<duv>
+		<div class="item-container">
+			<h2 ng-click="itemClicked()" class="item-title"></h2>
+			<div class="item-image" ng-mouseover="itemMouseOver()"style="background-color: #fff; width:200px; height:200px;">
+				
+			</div>
+			<div class="item-description">
+				
+			</div>
+		</div>
+	</div>

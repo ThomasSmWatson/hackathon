@@ -1,5 +1,6 @@
 var app = angular.module('tradeIt',['ngRoute','ngAnimate']);
 var token =null;
+var loggedIn = false;
 app.config(['$routeProvider',function($routeProvider){
 	$routeProvider.when('/',{
 		templateUrl:'res/views/home.html'
@@ -62,7 +63,10 @@ app.controller('loginController',['$scope','$http',function($scope,$http){
 			var response =$http.post('/authenticate',$scope.user).then(function(response){
 				token = response.data.token;
 				if(token){
-					$scope.loggedIn= true;
+					loggedIn= true;
+				}
+				else{
+					loggedIn=false;
 				}
 			});
 		}
@@ -75,9 +79,10 @@ app.controller('tradeController',['$scope','$http',function($scope,$http){
 	$scope.checkLoginStatus = function(){
 		console.log(token);
 		var params = {token:token}
-		$http.post('/verify',params).then(function(response){
-			$scope.loggedIn = (params==true);
-		});
+		$scope.loggedIn = loggedIn;
+		// $http.post('/verify',params).then(function(response){
+		// 	$scope.loggedIn = (params===true);
+		// });
 	}
 }]);
 
